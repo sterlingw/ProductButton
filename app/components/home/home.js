@@ -1,0 +1,8 @@
+/**
+ *
+ */
+app.controller('homeCtrl', function(){
+
+    
+    
+});
