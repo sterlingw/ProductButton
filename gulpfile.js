@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var KarmaServer = require('karma').Server;
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');

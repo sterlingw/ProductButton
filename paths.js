@@ -3,8 +3,11 @@ module.exports = {
         'app/app.module.js',
         'app/templates.js',
         'app/app.config.js',
+        '!app/**/*.spec.js',
         'app/**/*.js',
+        '!app/**/**/*.spec.js',
         'app/**/**/*.js',
+        '!app/**/**/**/*.spec.js',
         'app/**/**/**/*.js'
     ],
     css: [

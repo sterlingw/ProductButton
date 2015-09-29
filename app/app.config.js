@@ -10,7 +10,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
                 controller: "homeCtrl as homeCtrl"
             })
             .state('product', {
-                url: "/product",
+                url: "/product/:id",
                 templateUrl: 'components/product/product.html',
                 controller: "productCtrl as productCtrl"
             })
