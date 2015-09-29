@@ -8,7 +8,10 @@ module.exports = {
         'app/**/**/**/*.js'
     ],
     css: [
-        'css/app.css'
+        'css/*.css',
+        'css/**/*.css',
+        'css/**/**/*.css',
+        'css/**/**/**/*.css'
     ],
     templates: [
         'app/**/*.html',
