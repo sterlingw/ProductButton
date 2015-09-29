@@ -4,7 +4,7 @@
 app.factory('Product', function(){
 
     /**
-     *
+     * @class
      */
     function Product(args) {
         if (angular.isUndefined(args)) throw new Error('missing args');

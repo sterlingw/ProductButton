@@ -1,11 +1,21 @@
 /**
  *
  */
-app.controller('productCtrl', function($stateParams, api, Product){
+app.controller('productCtrl', function($stateParams, api, Product, ProductComment){
     var self = this;
     var id = $stateParams.id;
 
+    /* Get and format Product and Comment data */
     api.getProductById(id).then(function(data){
+        var comments = data.comments.map(function(comment){
+            return new ProductComment({
+                body:          comment.body,
+                childComments: [],
+                postedAt:      comment.created_at,
+                upvotes:       comment.votes,
+                postedBy:      comment.user.username
+            });
+        });
 
         self.product = new Product({
             voteCount:      data.votes_count,
@@ -14,9 +24,8 @@ app.controller('productCtrl', function($stateParams, api, Product){
             productHuntUrl: data.discussion_url,
             datePosted:     data.created_at,
             commentCount:   data.comments_count,
-            comments:       data.comments
+            comments:       comments
         });
-
     }, 
     function(err){
         throw err;

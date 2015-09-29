@@ -15,4 +15,15 @@
             <hr/>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-8 col-offset-2">
+            <div ng-repeat="comment in productCtrl.product.comments">
+                <p><strong>{{comment.postedBy}}</strong></p>
+                <p>{{comment.upvotes}}</p>
+                <hr/>
+                <p>{{comment.body}}</p>
+                <hr/>
+            </div>
+        </div>
+    </div>
 </div>
