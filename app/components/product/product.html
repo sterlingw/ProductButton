@@ -1,3 +1,18 @@
-<div class="product">
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>{{productCtrl.product.name}}</h1>
+            <p>{{productCtrl.product.tagline}}</p>
+        </div>
+        <div class="col-md-6">
+            <p>{{productCtrl.product.voteCount}} upvotes</p>
+            <a ng-href="productCtrl.product.productHuntUrl">View on ProductHunt</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>{{productCtrl.product.commentCount}} comments</h3>
+            <hr/>
+        </div>
+    </div>
 </div>

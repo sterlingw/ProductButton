@@ -4,8 +4,6 @@
 app.factory('api', function($http, $q, config){
     var api = {};
 
-    console.log(config);
-
     /**
      *
      */
@@ -42,7 +40,7 @@ app.factory('api', function($http, $q, config){
                 'Authorization': 'Bearer ' + config.API.TOKEN
             }
         }).then(function(res){
-            defer.resolve(res);
+            defer.resolve(res.data.post);
         }, 
         function(err){
             defer.reject(err);

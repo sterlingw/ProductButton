@@ -14,7 +14,7 @@ describe('api', function(){
             $httpBackend.expectGET(config.API.POSTS, {
                 'Authorization': 'Bearer ' + config.API.TOKEN,
                 'Accept': 'application/json, text/plain, */*'
-            }).respond({});
+            }).respond({posts:{}});
         });
         it('should resolve the promise', function(){
             api.getProducts().then(function(res){
@@ -29,7 +29,7 @@ describe('api', function(){
             $httpBackend.expectGET(config.API.POSTS + '123', {
                 'Authorization': 'Bearer ' + config.API.TOKEN,
                 'Accept': 'application/json, text/plain, */*'
-            }).respond({});
+            }).respond({post:{}});
         });
         it('should resolve the promise', function(){
             api.getProductById(123).then(function(res){
