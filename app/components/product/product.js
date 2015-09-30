@@ -1,7 +1,7 @@
 /**
  *
  */
-app.controller('productCtrl', function($stateParams, api, Product, ProductComment){
+app.controller('productCtrl', function($stateParams, api, Product, ProductComment, $window){
     var self = this;
     var id = $stateParams.id;
 
@@ -30,5 +30,12 @@ app.controller('productCtrl', function($stateParams, api, Product, ProductCommen
     function(err){
         throw err;
     });
+
+    /**
+     *
+     */
+    this.goTo = function(url){
+        $window.location.href = url;
+    };
     
 });
