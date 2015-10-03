@@ -23,14 +23,7 @@
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2 product-container--comments">
-            <div class="product-comment" ng-repeat="comment in productCtrl.product.comments">
-                <div class="product-comment-container--info">
-                    <p class="product-comment-author"><strong>{{comment.postedBy}}</strong></p>
-                    <p class="product-comment-upvotes">{{comment.upvotes}} upvotes</p>
-                </div>
-                <p class="product-comment-body">{{comment.body}}</p>
-                <hr/>
-            </div>
+            <product-comment ng-repeat="comment in productCtrl.product.comments" ng-model="comment"></product-comment>
         </div>
     </div>
 </div>

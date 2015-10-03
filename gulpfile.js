@@ -51,7 +51,6 @@ gulp.task('compile-vendor-js', function() {
         .pipe(sourcemaps.init())
         .pipe(concat('vendor.js'))
         .pipe(sourcemaps.write())
-        .pipe(uglify())
         .pipe(gulp.dest('public/js/'));
 });
 
