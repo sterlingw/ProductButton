@@ -5,6 +5,13 @@ app.factory('api', function($http, $q, config){
     var api = {};
 
     /**
+     * @private
+     */
+    api._getRandomProductId = function(products){
+        return products[0].id
+    };
+
+    /**
      *
      */
     api.getProducts = function(){
@@ -20,6 +27,21 @@ app.factory('api', function($http, $q, config){
             defer.resolve(res);
         }, 
         function(err){
+            defer.reject(err);
+        });
+
+        return defer.promise;
+    };
+
+    /**
+     *
+     */
+    api.getRandomProductId = function(){
+        var defer = $q.defer();
+
+        api.getProducts().then(function(res){
+            defer.resolve(api._getRandomProductId(res.data.posts));
+        }, function(err){
             defer.reject(err);
         });
 

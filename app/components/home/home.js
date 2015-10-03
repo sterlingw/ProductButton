@@ -8,11 +8,9 @@ app.controller('homeCtrl', function($http, $state, api){
      *
      */
     this.productButtonClick = function(){
-        api.getProducts().then(function(res){
-            var postId = res.data.posts[0].id;
-
+        api.getRandomProductId().then(function(productId){
             $state.go('product', {
-                id: postId
+                id: productId
             });
         }, 
         function(err){
