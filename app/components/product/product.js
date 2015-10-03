@@ -5,7 +5,6 @@ app.controller('productCtrl', function($stateParams, api, Product, ProductCommen
     var self = this;
     var id = $stateParams.id;
 
-    /* Get and format Product and Comment data */
     api.getProductById(id).then(function(data){
         var comments = data.comments.map(function(comment){
             return new ProductComment({
@@ -34,7 +33,7 @@ app.controller('productCtrl', function($stateParams, api, Product, ProductCommen
     /**
      *
      */
-    this.goTo = function(url){
+    self.goTo = function(url){
         $window.location.href = url;
     };
     
