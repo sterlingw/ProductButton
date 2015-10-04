@@ -1,11 +1,30 @@
 /***
  *
  */
-app.factory('api', function($http, $q, config){
+app.factory('api', function($http, $q, config, Product, ProductComment){
     var api = {};
 
     /**
      * @private
+     * @param {object} data - product data from API response
+     */
+    function transformGetProductById(data) {
+        if (angular.isUndefined(data)) throw new Error('Missing data');
+
+        return new Product({
+            voteCount:      data.votes_count,
+            name:           data.name,
+            tagline:        data.tagline,
+            productHuntUrl: data.discussion_url,
+            datePosted:     data.created_at,
+            commentCount:   data.comments_count,
+            comments:       data.comments
+        });
+    }
+
+    /**
+     * @private
+     * @param {array} products
      */
     api._getRandomProductId = function(products){
         return products[0].id
@@ -62,7 +81,7 @@ app.factory('api', function($http, $q, config){
                 'Authorization': 'Bearer ' + config.API.TOKEN
             }
         }).then(function(res){
-            defer.resolve(res.data.post);
+            defer.resolve(transformGetProductById(res.data.post));
         }, 
         function(err){
             defer.reject(err);

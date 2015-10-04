@@ -1,4 +1,4 @@
-describe('productComment', function() {
+describe('childComment', function() {
     var element,
     $compile;
     beforeEach(function(){
@@ -13,7 +13,7 @@ describe('productComment', function() {
             }
         };
 
-        element = $compile(angular.element('<product-comment ng-model="comment"></product-comment>'))(scope);
+        element = $compile(angular.element('<child-comment ng-model="comment"></child-comment>'))(scope);
     }));
 
     describe('init', function() {

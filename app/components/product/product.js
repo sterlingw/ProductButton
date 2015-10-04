@@ -5,28 +5,9 @@ app.controller('productCtrl', function($stateParams, api, Product, ProductCommen
     var self = this;
     var id = $stateParams.id;
 
-    api.getProductById(id).then(function(data){
-        var comments = data.comments.map(function(comment){
-            return new ProductComment({
-                body:          comment.body,
-                childComments: [],
-                postedAt:      comment.created_at,
-                upvotes:       comment.votes,
-                postedBy:      comment.user.username
-            });
-        });
-
-        self.product = new Product({
-            voteCount:      data.votes_count,
-            name:           data.name,
-            tagline:        data.tagline,
-            productHuntUrl: data.discussion_url,
-            datePosted:     data.created_at,
-            commentCount:   data.comments_count,
-            comments:       comments
-        });
-    }, 
-    function(err){
+    api.getProductById(id).then(function(product){
+        self.product = product;
+    }, function(err){
         throw err;
     });
 

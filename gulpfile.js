@@ -42,7 +42,7 @@ gulp.task('compile-js', function() {
         .pipe(ngAnnotate())
         .pipe(concat('app.js'))
         .pipe(sourcemaps.write())
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(gulp.dest('public/js/'));
 });
 

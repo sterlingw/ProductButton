@@ -51,7 +51,7 @@
 }
 
 .product-comment {
-    
+    list-style-type:none;
 }
 
 .product-comment-container--info {

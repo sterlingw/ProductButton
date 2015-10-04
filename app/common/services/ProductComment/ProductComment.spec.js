@@ -9,27 +9,35 @@ describe('ProductComment', function(){
         var comment;
         beforeEach(function(){
             comment = new ProductComment({
+                id: 123,
                 body: 'Hello',
                 childComments: [],
                 postedAt: new Date(),
                 upvotes: 2,
-                postedBy: 'Sterling Whitley'
+                postedBy: 'Sterling Whitley',
+                parentCommentId: 321
             });
         });
-        it('should define property body', function(){
+        it('defines property id', function(){
+            expect(comment.id).toBeDefined();
+        });
+        it('defines property body', function(){
             expect(comment.body).toBeDefined();
         });
-        it('should define property childComments', function(){
+        it('defines property childComments', function(){
             expect(comment.childComments).toBeDefined();
         });
-        it('should define property postedAt', function(){
+        it('defines property postedAt', function(){
             expect(comment.postedAt).toBeDefined();
         });
-        it('should define property upvotes', function(){
+        it('defines property upvotes', function(){
             expect(comment.upvotes).toBeDefined();
         });
-        it('should define property postedBy', function(){
+        it('defines property postedBy', function(){
             expect(comment.postedBy).toBeDefined();
+        });
+        it('defines property parentCommentId', function() {
+            expect(comment.parentCommentId).toBeDefined();
         });
     });
 });
