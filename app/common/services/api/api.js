@@ -26,8 +26,8 @@ app.factory('api', function($http, $q, config, Product, ProductComment){
      * @private
      * @param {array} products
      */
-    api._getRandomProductId = function(products){
-        return products[0].id
+    function getRandomProductId(products){
+        return (products[Math.floor(Math.random() * (products.length))]).id;
     };
 
     /**
@@ -59,7 +59,7 @@ app.factory('api', function($http, $q, config, Product, ProductComment){
         var defer = $q.defer();
 
         api.getProducts().then(function(res){
-            defer.resolve(api._getRandomProductId(res.data.posts));
+            defer.resolve(getRandomProductId(res.data.posts));
         }, function(err){
             defer.reject(err);
         });
