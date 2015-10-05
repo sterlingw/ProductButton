@@ -1,19 +1,9 @@
 var gulp = require('gulp');
-var KarmaServer = require('karma').Server;
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var precss = require('precss');
-var cssnano = require('cssnano');
-var templateCache = require('gulp-angular-templatecache');
-var sourcemaps = require('gulp-sourcemaps');
-var ngAnnotate = require('gulp-ng-annotate');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-
 var paths = require('./paths.js');
 
 
 gulp.task('test', function(done){
+    var KarmaServer = require('karma').Server;
     var server = new KarmaServer({
         configFile: __dirname + '/karma.conf.js',
         singleRun: true
@@ -22,6 +12,7 @@ gulp.task('test', function(done){
 });
 
 gulp.task('tdd', function(done){
+    var KarmaServer = require('karma').Server;
     var server = new KarmaServer({
         configFile: __dirname + '/karma.conf.js',
         singleRun: false,
@@ -31,22 +22,29 @@ gulp.task('tdd', function(done){
 });
 
 gulp.task('compile-templates', function() {
+    var templateCache = require('gulp-angular-templatecache');
     return gulp.src(paths.templates)
         .pipe(templateCache())
         .pipe(gulp.dest('app/'));
 });
 
 gulp.task('compile-js', function() {
+    var sourcemaps = require('gulp-sourcemaps');
+    var ngAnnotate = require('gulp-ng-annotate');
+    var concat = require('gulp-concat');
+    var uglify = require('gulp-uglify');
     return gulp.src(paths.js)
         .pipe(sourcemaps.init())
         .pipe(ngAnnotate())
         .pipe(concat('app.js'))
         .pipe(sourcemaps.write())
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('public/js/'));
 });
 
 gulp.task('compile-vendor-js', function() {
+    var sourcemaps = require('gulp-sourcemaps');
+    var concat = require('gulp-concat');
     return gulp.src(paths.vendorJs)
         .pipe(sourcemaps.init())
         .pipe(concat('vendor.js'))
@@ -55,6 +53,10 @@ gulp.task('compile-vendor-js', function() {
 });
 
 gulp.task('compile-css', function() {
+    var postcss = require('gulp-postcss');
+    var autoprefixer = require('autoprefixer');
+    var precss = require('precss');
+    var cssnano = require('cssnano');
     return gulp.src(paths.css)
         .pipe(postcss([
             precss,
@@ -65,11 +67,12 @@ gulp.task('compile-css', function() {
 });
 
 gulp.task('compile-vendor-css', function() {
+    var concat = require('gulp-concat');
+    var sourcemaps = require('gulp-sourcemaps');
     return gulp.src(paths.vendorCss)
         .pipe(sourcemaps.init())
         .pipe(concat('vendor.css'))
         .pipe(sourcemaps.write())
-        // .pipe(minifyCSS())
         .pipe(gulp.dest('./public/css'));
 });
 
