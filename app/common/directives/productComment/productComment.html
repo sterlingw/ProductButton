@@ -1,11 +1,11 @@
 <div class="product-comment" data-comment-id="{{ctrl.comment.id}}">
     <div class="product-comment-container--info">
-        <p class="product-comment-author"><strong>{{ctrl.comment.user.name}}</strong></p>
-        <p class="product-comment-upvotes">{{ctrl.comment.votes}} upvotes</p>
+        <p class="product-comment-author"><strong>{{ctrl.comment.postedBy}}</strong></p>
+        <p class="product-comment-upvotes">{{ctrl.comment.upvotes}} upvotes</p>
     </div>
     <p class="product-comment-body">{{ctrl.comment.body}}</p>
     <hr/>
     <ul class="product-comment-container--children">
-        <child-comment ng-repeat="childComment in ctrl.comment.child_comments" ng-model="childComment"></child-comment>
+        <child-comment ng-repeat="childComment in ctrl.comment.childComments" ng-model="childComment"></child-comment>
     </ul>
 </div>

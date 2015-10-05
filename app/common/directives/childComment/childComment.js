@@ -14,7 +14,7 @@ app.directive('childComment', function(){
         controller: function($element, $compile, $scope){
             var self = this;
             var scope = $scope.$new(true);
-            var elementHtml = '<product-comment ng-repeat="comment in ctrl.product.child_comments" ng-model="comment"></product-comment>';
+            var elementHtml = '<product-comment ng-repeat="comment in ctrl.product.childComments" ng-model="comment"></product-comment>';
 
             // Create scope variable for $compile since controllerAs syntax is in use
             scope.ctrl = {

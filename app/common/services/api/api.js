@@ -11,6 +11,28 @@ app.factory('api', function($http, $q, config, Product, ProductComment){
     function transformGetProductById(data) {
         if (angular.isUndefined(data)) throw new Error('Missing data');
 
+        /**
+         *
+         */
+        function rec(comment) {
+            var productComment = new ProductComment({
+                id:              comment.id,
+                body:            comment.body,
+                childComments:   comment.child_comments,
+                postedAt:        comment.created_at,
+                upvotes:         comment.votes,
+                postedBy:        comment.user.name,
+                parentCommentId: comment.parent_comment_id
+            });
+
+            // If comments exist
+            if (angular.isArray(comment.child_comments) && comment.child_comments.length) {
+                productComment.childComments = productComment.childComments.map(rec);
+            }
+
+            return productComment;
+        }
+
         return new Product({
             voteCount:      data.votes_count,
             name:           data.name,
@@ -18,7 +40,7 @@ app.factory('api', function($http, $q, config, Product, ProductComment){
             productHuntUrl: data.discussion_url,
             datePosted:     data.created_at,
             commentCount:   data.comments_count,
-            comments:       data.comments
+            comments:       data.comments.map(rec)
         });
     }
 
