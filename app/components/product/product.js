@@ -1,14 +1,15 @@
 /**
  *
  */
-app.controller('productCtrl', function($stateParams, Product, $window){
+app.controller('productCtrl', function($stateParams, Product, $window, growl, $state){
     var self = this;
     var id = $stateParams.id;
 
     Product.getProductById(id).then(function(product){
         self.product = product;
-    }, function(err){
-        throw err;
+    }, function(errorMessage){
+        growl.error(errorMessage);
+        $state.go('home');
     });
 
     /**

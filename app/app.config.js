@@ -1,8 +1,8 @@
 /***
  * 
  */
-app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider',
-    function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider){
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', 'growlProvider',
+    function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, growlProvider){
             $stateProvider
             .state('home', {
                 url: "/",
@@ -17,6 +17,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         ;
 
         $urlRouterProvider.otherwise('/');
+
+        growlProvider.globalTimeToLive(5000);
 }]);
 
 /**

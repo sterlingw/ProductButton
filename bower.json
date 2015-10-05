@@ -21,6 +21,7 @@
     "angular": "~1.4.6",
     "bootstrap": "~3.3.5",
     "angular-ui-router": "~0.2.15",
-    "angular-loading-bar": "~0.8.0"
+    "angular-loading-bar": "~0.8.0",
+    "angular-growl-v2": "~0.7.5"
   }
 }

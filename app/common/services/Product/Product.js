@@ -120,7 +120,7 @@ app.factory('Product', function(config, $q, $http, ProductComment){
             defer.resolve(transformGetProductById(res.data.post));
         }, 
         function(err){
-            defer.reject(err);
+            defer.reject('There was an error retrieving the information for this product.');
         });
 
         return defer.promise;
