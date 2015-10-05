@@ -1,0 +1,21 @@
+.footer {
+    text-align:center;
+}
+
+.footer-divider {
+    border-top:1px solid #ccc;
+    width:50%;
+}
+
+.footer-p {
+    color:#999;
+}
+
+.footer-link {
+    color:$orange;
+    text-decoration:underline;
+    &:hover {
+        color:$orange;
+        opacity:0.6;
+    }
+}
