@@ -1,18 +1,18 @@
 describe('homeCtrl', function(){
     var $controller,
-    api,
+    Product,
     $q;
     beforeEach(function(){
         module('ProductButton');
     });
-    beforeEach(inject(function(_$controller_, _api_, _$q_) {
+    beforeEach(inject(function(_$controller_, _Product_, _$q_) {
         $controller = _$controller_;
-        api = _api_;
+        Product = _Product_;
         $q = _$q_;
     }));
     function createCtrl(deps) {
         var defaultDeps = {
-            api: api
+            Product: Product
         };
         deps = (angular.isUndefined(deps)) ? defaultDeps : deps;
         return $controller('homeCtrl', deps);
@@ -21,12 +21,12 @@ describe('homeCtrl', function(){
     describe('#productButtonClick', function() {
         beforeEach(function(){
             var defer = $q.defer();
-            spyOn(api, 'getRandomProductId').and.returnValue(defer.promise);
+            spyOn(Product, 'getRandomProductId').and.returnValue(defer.promise);
             defer.resolve();
         });
-        it('calls api.getRandomProductId', function() {
+        it('calls Product.getRandomProductId', function() {
             createCtrl().productButtonClick();
-            expect(api.getRandomProductId).toHaveBeenCalled();
+            expect(Product.getRandomProductId).toHaveBeenCalled();
         });
     });
 });

@@ -1,14 +1,14 @@
 /***
  *
  */
-app.controller('homeCtrl', function($http, $state, api){
+app.controller('homeCtrl', function($http, $state, Product){
 
 
     /**
      *
      */
     this.productButtonClick = function(){
-        api.getRandomProductId().then(function(productId){
+        Product.getRandomProductId().then(function(productId){
             $state.go('product', {
                 id: productId
             });

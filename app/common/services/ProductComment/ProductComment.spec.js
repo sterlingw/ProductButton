@@ -40,4 +40,50 @@ describe('ProductComment', function(){
             expect(comment.parentCommentId).toBeDefined();
         });
     });
+    describe('#hasChildComments', function() {
+        describe('when it has no child comments', function() {
+            var comment;
+            beforeEach(function(){
+                comment = new ProductComment({
+                    id: 123,
+                    body: 'Hello',
+                    childComments: [],
+                    postedAt: new Date(),
+                    upvotes: 2,
+                    postedBy: 'Sterling Whitley',
+                    parentCommentId: 321
+                });
+            });
+            it('returns false', function() {
+                expect(comment.hasChildComments()).toBeFalsy();
+            });
+        });
+        describe('when child comments are present', function() {
+            var comment;
+            beforeEach(function(){
+                comment = new ProductComment({
+                    id: 123,
+                    body: 'Hello',
+                    childComments: [
+                        new ProductComment({
+                            id: 123,
+                            body: 'Hello',
+                            childComments: [],
+                            postedAt: new Date(),
+                            upvotes: 2,
+                            postedBy: 'Sterling Whitley',
+                            parentCommentId: 321
+                        })
+                    ],
+                    postedAt: new Date(),
+                    upvotes: 2,
+                    postedBy: 'Sterling Whitley',
+                    parentCommentId: 321
+                });
+            });
+            it('returns true', function(){
+                expect(comment.hasChildComments()).toBeTruthy();
+            });
+        });
+    });
 });

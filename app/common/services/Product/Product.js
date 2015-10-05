@@ -33,8 +33,7 @@ app.factory('Product', function(config, $q, $http, ProductComment){
             parentCommentId: comment.parent_comment_id
         });
 
-        // If comments exist
-        if (angular.isArray(comment.child_comments) && comment.child_comments.length) {
+        if (productComment.hasChildComments()) {
             productComment.childComments = productComment.childComments.map(rec);
         }
 

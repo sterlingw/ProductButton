@@ -18,5 +18,12 @@ app.factory('ProductComment', function(){
         this.parentCommentId = args.parentCommentId;
     }
 
+    /**
+     * @return {boolean}
+     */
+    ProductComment.prototype.hasChildComments = function(){
+        return angular.isArray(this.childComments) && this.childComments.length;
+    };
+
     return ProductComment;
 });
