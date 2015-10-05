@@ -14,7 +14,6 @@
     "autoprefixer": "^6.0.3",
     "cssnano": "^3.2.0",
     "es6-promise": "^3.0.2",
-    "gulp": "^3.9.0",
     "gulp-angular-templatecache": "^1.7.0",
     "gulp-concat": "^2.6.0",
     "gulp-ng-annotate": "^1.1.0",
@@ -31,6 +30,7 @@
   },
   "dependencies": {
     "bower": "^1.5.3",
+    "gulp": "^3.9.0",
     "express": "^4.13.3",
     "gzippo": "^0.2.0"
   }
