@@ -14,6 +14,7 @@ module.exports = function(config) {
             'bower_components/jquery/dist/jquery.js',
             'bower_components/bootstrap/dist/js/bootstrap.js',
             'app/app.module.js',
+            'spec/factories/*.js',
             'app/templates.js',
             'app/app.config.js',
             'app/**/*.js',

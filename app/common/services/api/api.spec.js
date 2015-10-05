@@ -4,15 +4,19 @@ describe('api', function(){
     config,
     $q,
     Product,
-    ProductComment;
+    ProductComment,
+    apiResponsePosts,
+    apiResponsePost;
     beforeEach(module('ProductButton'));
-    beforeEach(inject(function(_api_, _$httpBackend_, _config_, _$q_, _Product_, _ProductComment_){
+    beforeEach(inject(function(_api_, _$httpBackend_, _config_, _$q_, _Product_, _ProductComment_, _apiResponsePosts_, _apiResponsePost_){
         api = _api_;
         $httpBackend = _$httpBackend_;
         config = _config_;
         $q = _$q_;
         Product = _Product_;
         ProductComment = _ProductComment_;
+        apiResponsePosts = _apiResponsePosts_;
+        apiResponsePost = _apiResponsePost_;
     }));
 
     describe('.getProducts', function(){
@@ -20,7 +24,7 @@ describe('api', function(){
             $httpBackend.expectGET(config.API.POSTS, {
                 'Authorization': 'Bearer ' + config.API.TOKEN,
                 'Accept': 'application/json, text/plain, */*'
-            }).respond({posts:[{id: 123}]});
+            }).respond(apiResponsePosts.build());
         });
         it('resolves the promise', function(){
             api.getProducts().then(function(res){
@@ -35,7 +39,7 @@ describe('api', function(){
             $httpBackend.expectGET(config.API.POSTS, {
                 'Authorization': 'Bearer ' + config.API.TOKEN,
                 'Accept': 'application/json, text/plain, */*'
-            }).respond({posts:[{id: 123}]});
+            }).respond(apiResponsePosts.build());
         });
         it('calls api.getProducts', function() {
             var defer = $q.defer();
@@ -59,20 +63,7 @@ describe('api', function(){
             $httpBackend.expectGET(config.API.POSTS + '123', {
                 'Authorization': 'Bearer ' + config.API.TOKEN,
                 'Accept': 'application/json, text/plain, */*'
-            }).respond({
-                post:{
-                    id:123, 
-                    comments:[
-                        {
-                            parent_comment_id:123
-                        }, {
-                            parent_comment_id:123
-                        }, {
-                            parent_comment_id:123
-                        }
-                    ]
-                }
-            });
+            }).respond(apiResponsePost.build());
         });
         it('resolves the promise', function(){
             api.getProductById(123).then(function(product){
