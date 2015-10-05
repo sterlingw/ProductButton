@@ -6,6 +6,6 @@ var gzippo  = require('gzippo'),
     app     = express(),
     port    = process.env.PORT || 3000;
 
-app.use(gzippo.staticGzip("" + __dirname + "/"));
+app.use(gzippo.staticGzip('public/'));
 
 app.listen(port);
