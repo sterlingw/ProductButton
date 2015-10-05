@@ -23,7 +23,7 @@ describe('productCtrl', function(){
         return $controller('productCtrl', deps);
     }
 
-    describe('when the controller runs', function() {
+    describe('init', function() {
         it('calls Product.getProductById', function() {
             var defer = $q.defer();
             spyOn(Product, 'getProductById').and.returnValue(defer.promise);

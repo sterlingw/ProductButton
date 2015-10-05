@@ -3,7 +3,6 @@
  */
 app.controller('homeCtrl', function($http, $state, Product){
 
-
     /**
      *
      */
@@ -17,6 +16,5 @@ app.controller('homeCtrl', function($http, $state, Product){
             throw err;
         });
     };
-    
 
 });

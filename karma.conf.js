@@ -11,6 +11,7 @@ module.exports = function(config) {
             'bower_components/angular/angular.js',
             'node_modules/angular-mocks/angular-mocks.js',
             'bower_components/angular-ui-router/release/angular-ui-router.js',
+            'bower_components/angular-loading-bar/build/loading-bar.js',
             'bower_components/jquery/dist/jquery.js',
             'bower_components/bootstrap/dist/js/bootstrap.js',
             'app/app.module.js',
