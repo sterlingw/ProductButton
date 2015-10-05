@@ -4,15 +4,17 @@ describe('Product', function(){
     $httpBackend,
     config,
     apiResponsePosts,
-    apiResponsePost;
+    apiResponsePost,
+    ProductComment;
     beforeEach(module('ProductButton'));
-    beforeEach(inject(function(_Product_, _$q_, _$httpBackend_, _config_, _apiResponsePost_, _apiResponsePosts_){
+    beforeEach(inject(function(_Product_, _$q_, _$httpBackend_, _config_, _apiResponsePost_, _apiResponsePosts_, _ProductComment_){
         Product = _Product_;
         $q = _$q_;
         config = _config_;
         $httpBackend = _$httpBackend_;
         apiResponsePost = _apiResponsePost_;
         apiResponsePosts = _apiResponsePosts_;
+        ProductComment = _ProductComment_;
     }));
 
     describe('constructor', function(){
@@ -57,36 +59,12 @@ describe('Product', function(){
             
         });
     });
-    xdescribe('.getProducts', function(){
-        beforeEach(function(){
-            $httpBackend.expectGET(config.API.POSTS, {
-                'Authorization': 'Bearer ' + config.API.TOKEN,
-                'Accept': 'application/json, text/plain, */*'
-            }).respond(apiResponsePosts.build());
-        });
-        it('resolves the promise', function(){
-            Product.getProducts().then(function(res){
-                expect(res).toBeDefined();
-            });
-
-            $httpBackend.flush();
-        });
-    });
     describe('.getRandomProductId', function() {
         beforeEach(function(){
             $httpBackend.expectGET(config.API.POSTS, {
                 'Authorization': 'Bearer ' + config.API.TOKEN,
                 'Accept': 'application/json, text/plain, */*'
             }).respond(apiResponsePosts.build());
-        });
-        xit('calls Product.getProducts', function() {
-            var defer = $q.defer();
-            spyOn(Product, 'getProducts').and.returnValue(defer.promise);
-            defer.resolve();
-
-            Product.getRandomProductId();
-
-            expect(Product.getProducts).toHaveBeenCalled();
         });
         it('resolves with a number', function() {
             Product.getRandomProductId().then(function(productId){
@@ -116,17 +94,6 @@ describe('Product', function(){
             });
 
             $httpBackend.flush();
-        });
-        xdescribe('property comments', function() {
-            it('is an array ProductComment instances', function() {
-                 Product.getProductById(123).then(function(product){
-                    expect(product.comments[0] instanceof ProductComment).toBeTruthy();
-                    expect(product.comments[1] instanceof ProductComment).toBeTruthy();
-                    expect(product.comments[2] instanceof ProductComment).toBeTruthy();
-                });
-
-                $httpBackend.flush();
-             }); 
         });
     });
 });
