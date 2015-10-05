@@ -30,6 +30,7 @@
     "precss": "^1.2.3"
   },
   "dependencies": {
+    "bower": "^1.5.3",
     "express": "^4.13.3",
     "gzippo": "^0.2.0"
   }
