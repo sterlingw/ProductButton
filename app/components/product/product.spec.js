@@ -1,6 +1,6 @@
 describe('productCtrl', function(){
     var $controller,
-    api,
+    Product,
     $q,
     $httpBackend,
     config,
@@ -8,9 +8,9 @@ describe('productCtrl', function(){
     beforeEach(function(){
         module('ProductButton');
     });
-    beforeEach(inject(function(_$controller_, _api_, _$q_, _$httpBackend_, _config_) {
+    beforeEach(inject(function(_$controller_, _Product_, _$q_, _$httpBackend_, _config_) {
         $controller = _$controller_;
-        api = _api_;
+        Product = _Product_;
         $q = _$q_;
         $httpBackend = _$httpBackend_;
         config = _config_;
@@ -24,14 +24,14 @@ describe('productCtrl', function(){
     }
 
     describe('when the controller runs', function() {
-        it('calls api.getProductById', function() {
+        it('calls Product.getProductById', function() {
             var defer = $q.defer();
-            spyOn(api, 'getProductById').and.returnValue(defer.promise);
+            spyOn(Product, 'getProductById').and.returnValue(defer.promise);
             defer.resolve();
 
             createCtrl();
 
-            expect(api.getProductById).toHaveBeenCalledWith(id);
+            expect(Product.getProductById).toHaveBeenCalledWith(id);
         });
         it('assigns a product to the controller', function() {
             $httpBackend.expectGET(config.API.POSTS + id, {

@@ -1,11 +1,11 @@
 /**
  *
  */
-app.controller('productCtrl', function($stateParams, api, Product, ProductComment, $window){
+app.controller('productCtrl', function($stateParams, Product, $window){
     var self = this;
     var id = $stateParams.id;
 
-    api.getProductById(id).then(function(product){
+    Product.getProductById(id).then(function(product){
         self.product = product;
     }, function(err){
         throw err;
